@@ -1,0 +1,31 @@
+<!-- ecommerce/templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>One-Product E-commerce Site</title>
+
+    <!-- include htmx ⬇️ -->
+    <script
+      src="https://unpkg.com/htmx.org@1.9.11"
+      integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- include mvp.css ⬇️ -->
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+  </head>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-boost="true">
+    <header>
+      <h1>One-Product E-commerce Site</h1>
+    </header>
+    <main>
+      <section>
+        {% if messages %} {% for message in messages %}
+        <p><mark>{{ message }}</mark></p>
+        {% endfor %} {% endif %}
+      </section>
+      {% block content %} {% endblock %}
+    </main>
+  </body>
+</html>
